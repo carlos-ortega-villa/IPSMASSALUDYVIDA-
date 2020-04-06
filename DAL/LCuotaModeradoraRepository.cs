@@ -1,9 +1,5 @@
-﻿using System;
+﻿using ENTITY;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ENTITY;
 using System.IO;
 
 namespace DAL
@@ -31,7 +27,7 @@ namespace DAL
             FileStream filestream = new FileStream(Ruta, FileMode.OpenOrCreate);
             StreamReader streamreader = new StreamReader(filestream);
             string linea = string.Empty;
-            while((linea = streamreader.ReadLine()) != null)
+            while ((linea = streamreader.ReadLine()) != null)
             {
                 LiquidacionCuotaModeradora lCuotaModeradora = MapearLCM(linea);
                 LiquidacionDeCuotas.Add(lCuotaModeradora);
@@ -51,7 +47,7 @@ namespace DAL
             decimal VServicioPrestado = decimal.Parse(Datos[4]);
             if (Datos[2] == "Subsidiado")
             {
-                lCuotaModeradora =new RegimenSubsidiado(NLiquidacion, NIdentificacion, VServicioPrestado);
+                lCuotaModeradora = new RegimenSubsidiado(NLiquidacion, NIdentificacion, VServicioPrestado);
             }
             else
             {
@@ -59,9 +55,9 @@ namespace DAL
             }
             lCuotaModeradora.TopeMaximo = decimal.Parse(Datos[5]);
             lCuotaModeradora.TarifaServicio = decimal.Parse(Datos[6]);
-            lCuotaModeradora.VCuotaModeradora= decimal.Parse(Datos[7]);
+            lCuotaModeradora.VCuotaModeradora = decimal.Parse(Datos[7]);
             lCuotaModeradora.Tope = (Datos[8]);
-            lCuotaModeradora.VCuotaTotal= decimal.Parse(Datos[9]);
+            lCuotaModeradora.VCuotaTotal = decimal.Parse(Datos[9]);
             return lCuotaModeradora;
         }
 
@@ -72,11 +68,11 @@ namespace DAL
             foreach (var item in LiquidacionDeCuotas)
             {
                 if (item.NLiquidacion.Equals(IDLiquidacion))
-                    { return item; }
+                { return item; }
             }
             return null;
         }
-        public void Eliminar(int IDLiquidacion) 
+        public void Eliminar(int IDLiquidacion)
         {
             LiquidacionDeCuotas.Clear();
             LiquidacionDeCuotas = Consultar();
@@ -84,7 +80,7 @@ namespace DAL
             file.Close();
             foreach (var item in LiquidacionDeCuotas)
             {
-                if(item.NLiquidacion != IDLiquidacion)
+                if (item.NLiquidacion != IDLiquidacion)
                 {
                     Guardar(item);
                 }
