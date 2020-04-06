@@ -12,7 +12,7 @@ namespace IPSMASSALUDYVIDA_
         static string DATO;
         static void Main(string[] args)
         {
-
+            Menu();
         }
         public static void Menu()
         {
@@ -185,3 +185,4 @@ namespace IPSMASSALUDYVIDA_
         }
     }
 }
+
