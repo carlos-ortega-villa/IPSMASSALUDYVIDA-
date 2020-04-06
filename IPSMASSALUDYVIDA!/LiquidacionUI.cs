@@ -57,7 +57,7 @@ namespace IPSMASSALUDYVIDA_
             int NLiquidacion = int.Parse(Console.ReadLine());
             Console.WriteLine("Digite el numero de identificacion");
             int NIdentificacion= int.Parse(Console.ReadLine());
-            decimal Salario;
+            decimal Salario= decimal.Parse(Console.ReadLine());
             Console.WriteLine("Digite el valor del servicio prestado por el Hospital");
             decimal VServicioPrestado = decimal.Parse(Console.ReadLine());
             if ( regimen == "S")
